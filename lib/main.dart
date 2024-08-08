@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'home_page.dart';
+import 'audioplayer_page.dart';
 import 'logo_screen.dart';
 
 void main() {
@@ -15,11 +16,26 @@ class MyApp extends StatelessWidget {
       title: 'GrooveCam',
       theme: ThemeData(
         primarySwatch: Colors.orange,
-        textTheme: GoogleFonts.dosisTextTheme(
-          Theme.of(context).textTheme,
-        ),
       ),
-      home: const LogoScreen(),
+      // Set the initial route to the LogoScreen
+      initialRoute: '/logo',
+      onGenerateRoute: (settings) {
+        if (settings.name == '/home') {
+          return PageRouteBuilder(
+            pageBuilder: (context, animation, secondaryAnimation) => const HomePage(),
+            transitionsBuilder: (context, animation, secondaryAnimation, child) {
+              return FadeTransition(opacity: animation, child: child);
+            },
+            transitionDuration: const Duration(milliseconds: 600),
+          );
+        }
+        // Handle other routes here
+        return null;
+      },
+      routes: {
+        '/logo': (context) => const LogoScreen(), // Add LogoScreen route
+        '/audio_player': (context) => const AudioPlayerPage(),
+      },
     );
   }
 }

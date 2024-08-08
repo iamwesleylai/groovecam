@@ -8,19 +8,28 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       backgroundColor: const Color(0xFF5D0605),
       appBar: AppBar(
-        title: const Text('GrooveCam'),
-        backgroundColor: const Color(0xFF5D0605),
+        title: const Text(
+          'GrooveCam', // Display the app name
+          style: TextStyle(
+            fontFamily: 'Dosis',
+            fontSize: 30,
+            fontWeight: FontWeight.bold,
+            color: Color(0xFF5D0605), // Set the text color
+          ),
+        ),
+        backgroundColor: const Color(0xFFFA9F42),
       ),
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.all(16.0),
+          padding: const EdgeInsets.all(50.0),
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Text(
                 'Welcome to GrooveCam!',
+                textAlign: TextAlign.center,
                 style: Theme.of(context).textTheme.headlineMedium?.copyWith(
-                      color: const Color(0xFF5D0605),
+                      color: const Color(0xFFFA9F42),
                       fontWeight: FontWeight.bold,
                     ),
               ),
@@ -28,21 +37,39 @@ class HomePage extends StatelessWidget {
               Text(
                 'Capture your groove with style.',
                 style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                      color: Colors.grey[700],
+                      color: const Color(0xFFFA9F42),
                     ),
               ),
               const SizedBox(height: 40),
               Center(
-                child: ElevatedButton(
-                  onPressed: () {
-                    // Add camera functionality here
-                  },
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: const Color(0xFFFA9F42), // Updated property name
-                    padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 15),
-                    textStyle: const TextStyle(fontSize: 18),
-                  ),
-                  child: const Text('Start Grooving'),
+                child: Column(
+                  children: [
+                    ElevatedButton(
+                      onPressed: () {
+                        // Add camera functionality here
+                      },
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: const Color(0xFFFA9F42),
+                        foregroundColor: const Color(0xFF5D0605),
+                        padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 15),
+                        textStyle: const TextStyle(fontSize: 18),
+                      ),
+                      child: const Text('Start Grooving'),
+                    ),
+                    const SizedBox(height: 20),
+                    ElevatedButton(
+                      onPressed: () {
+                        Navigator.pushNamed(context, '/audio_player');
+                      },
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: const Color(0xFFFA9F42),
+                        foregroundColor: const Color(0xFF5D0605),
+                        padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 15),
+                        textStyle: const TextStyle(fontSize: 18),
+                      ),
+                      child: const Text('Audio Player'),
+                    ),
+                  ],
                 ),
               ),
             ],
