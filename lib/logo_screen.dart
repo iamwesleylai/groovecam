@@ -8,72 +8,73 @@ class LogoScreen extends StatefulWidget {
   State<LogoScreen> createState() => LogoScreenState();
 }
 
-class LogoScreenState extends State<LogoScreen> with SingleTickerProviderStateMixin{
-
+class LogoScreenState extends State<LogoScreen> with SingleTickerProviderStateMixin {
+  
+  // Declare an AnimationController to manage the animation
   late AnimationController _controller;
 
   @override
   void initState() {
     super.initState();
-    // Create an animation controller that lasts for 2 seconds
+    
+    // Initialize the AnimationController with a duration of 2 seconds
     _controller = AnimationController(
       duration: const Duration(seconds: 2),
-      vsync: this,
+      vsync: this, // Use this widget as the TickerProvider
     );
-    
-    
-    // Start the animation after a delay
+
+    // Start the animation after a delay of 2 seconds
     Future.delayed(const Duration(seconds: 2), () {
+      // Forward the animation and navigate to HomePage after completion
       _controller.forward().then((_) => _navigateToHome());
     });
   }
 
   @override
   void dispose() {
+    // Dispose of the AnimationController to free up resources
     _controller.dispose();
     super.dispose();
   }
 
-
+  // Navigate to the HomePage using a named route
   void _navigateToHome() async {
+    // Wait for an additional 1 second before navigation
     await Future.delayed(const Duration(seconds: 1));
+    // Check if the widget is still mounted before navigating
     if (!mounted) return;
-    Navigator.pushReplacement(
-      context,
-      PageRouteBuilder(
-        pageBuilder: (context, animation, secondaryAnimation) => const HomePage(),
-        transitionsBuilder: (context, animation, secondaryAnimation, child) {
-          return FadeTransition(opacity: animation, child: child);
-        },
-        transitionDuration: const Duration(milliseconds: 600),
-      ),
-    );
+    // Replace the current screen with HomePage using the named route
+    Navigator.pushReplacementNamed(context, '/home');
   }
 
   @override
   Widget build(BuildContext context) {
+    // Build the UI for the LogoScreen
     return Scaffold(
-      backgroundColor: const Color(0xFF5D0605),
-      body: Column(
+      backgroundColor: const Color(0xFF5D0605), // Set the background color
+      body: Stack(
         children: [
           Expanded(
             child: Center(
               child: Image.asset(
-                'assets/groovecam_logo.png',
+                'assets/groovecam_logo.png', // Display the logo image
                 width: 175,
                 height: 175,
               ),
             ),
           ),
-          const Padding(
-            padding: EdgeInsets.only(bottom: 40), // Adds padding from the bottom
-            child: Text(
-              'GrooveCam',
-              style: TextStyle(
-                fontFamily: 'Dosis',
-                fontSize: 40,
-                fontWeight: FontWeight.bold,
-                color: Color(0xFFFA9F42),
+          const Align(
+            alignment: Alignment.bottomCenter,
+            child: Padding(
+              padding: EdgeInsets.only(bottom: 40), // Add padding from the bottom
+              child: Text(
+                'GrooveCam', // Display the app name
+                style: TextStyle(
+                  fontFamily: 'Dosis',
+                  fontSize: 40,
+                  fontWeight: FontWeight.bold,
+                  color: Color(0xFFFA9F42), // Set the text color
+                ),
               ),
             ),
           ),
