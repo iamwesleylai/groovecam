@@ -1,4 +1,6 @@
 ﻿import 'package:flutter/material.dart';
+import 'package:groovecam_app/consts/colors.dart';
+import 'package:groovecam_app/consts/text_style.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -6,18 +8,16 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFF5D0605),
+      backgroundColor: AppColors.secondary,
       appBar: AppBar(
-        title: const Text(
+        title: Text(
           'GrooveCam', // Display the app name
-          style: TextStyle(
-            fontFamily: 'Dosis',
-            fontSize: 30,
-            fontWeight: FontWeight.bold,
-            color: Color(0xFF5D0605), // Set the text color
+          style: logoStyle(
+            size: 30,
+            color: AppColors.secondary, // Set the text color
           ),
         ),
-        backgroundColor: const Color(0xFFFA9F42),
+        backgroundColor: AppColors.primary,
       ),
       body: SafeArea(
         child: Padding(
@@ -28,17 +28,12 @@ class HomePage extends StatelessWidget {
               Text(
                 'Welcome to GrooveCam!',
                 textAlign: TextAlign.center,
-                style: Theme.of(context).textTheme.headlineMedium?.copyWith(
-                      color: const Color(0xFFFA9F42),
-                      fontWeight: FontWeight.bold,
-                    ),
+                style: headlineStyle()
               ),
               const SizedBox(height: 20),
               Text(
                 'Capture your groove with style.',
-                style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                      color: const Color(0xFFFA9F42),
-                    ),
+                style: normalStyle()
               ),
               const SizedBox(height: 40),
               Center(
@@ -49,10 +44,10 @@ class HomePage extends StatelessWidget {
                         // Add camera functionality here
                       },
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: const Color(0xFFFA9F42),
-                        foregroundColor: const Color(0xFF5D0605),
+                        backgroundColor: AppColors.primary,
+                        foregroundColor: AppColors.secondary,
                         padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 15),
-                        textStyle: const TextStyle(fontSize: 18),
+                        textStyle: buttonStyle(),
                       ),
                       child: const Text('Start Grooving'),
                     ),
@@ -62,10 +57,10 @@ class HomePage extends StatelessWidget {
                         Navigator.pushNamed(context, '/audio_player');
                       },
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: const Color(0xFFFA9F42),
-                        foregroundColor: const Color(0xFF5D0605),
+                        backgroundColor: AppColors.primary,
+                        foregroundColor: AppColors.secondary,
                         padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 15),
-                        textStyle: const TextStyle(fontSize: 18),
+                        textStyle: buttonStyle(),
                       ),
                       child: const Text('Audio Player'),
                     ),

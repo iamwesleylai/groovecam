@@ -14,9 +14,6 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'GrooveCam',
-      theme: ThemeData(
-        primarySwatch: Colors.orange,
-      ),
       // Set the initial route to the LogoScreen
       initialRoute: '/logo',
       onGenerateRoute: (settings) {
