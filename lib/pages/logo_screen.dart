@@ -1,5 +1,6 @@
 ﻿import 'package:flutter/material.dart';
-import 'home_page.dart';
+import 'package:groovecam_app/consts/colors.dart';
+import 'package:groovecam_app/consts/text_style.dart';
 
 class LogoScreen extends StatefulWidget {
   const LogoScreen({super.key});
@@ -51,7 +52,7 @@ class LogoScreenState extends State<LogoScreen> with SingleTickerProviderStateMi
   Widget build(BuildContext context) {
     // Build the UI for the LogoScreen
     return Scaffold(
-      backgroundColor: const Color(0xFF5D0605), // Set the background color
+      backgroundColor: AppColors.secondary, // Set the background color
       body: Stack(
         children: [
           Expanded(
@@ -63,18 +64,13 @@ class LogoScreenState extends State<LogoScreen> with SingleTickerProviderStateMi
               ),
             ),
           ),
-          const Align(
+          Align(
             alignment: Alignment.bottomCenter,
             child: Padding(
-              padding: EdgeInsets.only(bottom: 40), // Add padding from the bottom
+              padding: const EdgeInsets.only(bottom: 40), // Add padding from the bottom
               child: Text(
                 'GrooveCam', // Display the app name
-                style: TextStyle(
-                  fontFamily: 'Dosis',
-                  fontSize: 40,
-                  fontWeight: FontWeight.bold,
-                  color: Color(0xFFFA9F42), // Set the text color
-                ),
+                style: logoStyle(),
               ),
             ),
           ),
