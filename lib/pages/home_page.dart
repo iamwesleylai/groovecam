@@ -41,7 +41,8 @@ class HomePage extends StatelessWidget {
                   children: [
                     ElevatedButton(
                       onPressed: () {
-                        // Add camera functionality here
+                        // Navigate to the camera screen
+                        Navigator.pushNamed(context, '/camera');
                       },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: AppColors.primary,
