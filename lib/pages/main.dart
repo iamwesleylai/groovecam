@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'home_page.dart';
 import 'audioplayer_page.dart';
 import 'logo_screen.dart';
+import 'camera_screen.dart'; // Import the camera screen
 
 void main() {
   runApp(const MyApp());
@@ -32,6 +33,7 @@ class MyApp extends StatelessWidget {
       routes: {
         '/logo': (context) => const LogoScreen(), // Add LogoScreen route
         '/audio_player': (context) => const AudioPlayerPage(),
+        '/camera': (context) => const CameraScreen(), // Add CameraScreen route
       },
     );
   }

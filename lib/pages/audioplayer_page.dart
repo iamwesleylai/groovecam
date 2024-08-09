@@ -1,54 +1,58 @@
-﻿import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart'; // Flutter's core package for building UI
 
-class AudioPlayerPage extends StatefulWidget {
+// Define a new widget called AudioPlayerPage, which is a StatelessWidget
+class AudioPlayerPage extends StatelessWidget {
+  // Constructor for the widget
   const AudioPlayerPage({super.key});
 
-  @override
-  AudioPlayerPageState createState() => AudioPlayerPageState();
-}
+  // Create a controller using GetX to manage the audio player
+  // final controller = Get.put(PlayerController());
 
-class AudioPlayerPageState extends State<AudioPlayerPage> {
-  bool _isPlaying = false;
-
-  void _togglePlayPause() {
-    setState(() {
-      _isPlaying = !_isPlaying;
-    });
-  }
-
+  // Placeholder method for skipping to the next audio track
   void _skipToNext() {
-    // Placeholder for skip to next functionality
+    // This will be implemented later
   }
 
+  // Placeholder method for skipping to the previous audio track or restarting
   void _skipToPreviousOrStart() {
-    // Placeholder for skip to previous or restart functionality
+    // This will be implemented later
   }
 
+  // Build method to create the UI of the page
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      // Set the background color of the page
       backgroundColor: const Color(0xFF5D0605),
+      // Create an app bar with a title
       appBar: AppBar(
         title: const Text('Audio Player'),
         backgroundColor: const Color(0xFFFA9F42),
       ),
+      // Center the content on the page
       body: Center(
+        // Create a row of buttons for audio control
         child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center, // Center the buttons horizontally
           children: [
+            // Button to skip to the previous track or restart
             ElevatedButton(
               onPressed: _skipToPreviousOrStart,
-              child: const Icon(Icons.skip_previous),
+              child: const Icon(Icons.skip_previous), // Icon for the button
             ),
-            const Padding(padding: EdgeInsets.all(10)),
+            const Padding(padding: EdgeInsets.all(10)), // Space between buttons
+            // Button with a funny icon
             ElevatedButton(
-              onPressed: _togglePlayPause,
-              child: Icon(_isPlaying ? Icons.pause : Icons.play_arrow),
+              onPressed: () {
+                // Placeholder for play/pause functionality
+              },
+              child: const Icon(Icons.sentiment_very_satisfied), // Random funny icon
             ),
-            const Padding(padding: EdgeInsets.all(10)),
+            const Padding(padding: EdgeInsets.all(10)), // Space between buttons
+            // Button to skip to the next track
             ElevatedButton(
               onPressed: _skipToNext,
-              child: const Icon(Icons.skip_next),
+              child: const Icon(Icons.skip_next), // Icon for the button
             ),
           ],
         ),
@@ -57,8 +61,9 @@ class AudioPlayerPageState extends State<AudioPlayerPage> {
   }
 }
 
+// Main function to run the app
 void main() {
   runApp(const MaterialApp(
-    home: AudioPlayerPage(),
+    home: AudioPlayerPage(), // Set AudioPlayerPage as the home screen
   ));
 }
